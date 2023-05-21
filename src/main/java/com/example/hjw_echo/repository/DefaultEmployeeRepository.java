@@ -18,4 +18,9 @@ public class DefaultEmployeeRepository implements EmployeeRepository {
 	public Employee findById(Long id) {
 		return employeeMapper.findById(id);
 	}
+
+	@Override
+	public void updateEmployee(Long employeeId, Employee updatedEmployee) {
+		employeeMapper.updateEmployee(employeeId,updatedEmployee);
+	}
 }

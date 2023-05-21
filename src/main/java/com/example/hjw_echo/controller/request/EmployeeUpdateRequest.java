@@ -1,25 +1,19 @@
-package com.example.hjw_echo.domain;
+package com.example.hjw_echo.controller.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.example.hjw_echo.controller.request.EmployeeUpdateRequest;
-
-public class Employee {
-	private Long employeeId;
+public class EmployeeUpdateRequest {
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phoneNumber;
 	private LocalDate hireDate;
-	private String jobId;
 	private BigDecimal salary;
 	private BigDecimal commissionPct;
-	private Long managerId;
-	private Long departmentId;
 
-	public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate hireDate,
-		BigDecimal salary, BigDecimal commissionPct) {
+	public EmployeeUpdateRequest( String firstName, String lastName, String email, String phoneNumber,
+		LocalDate hireDate, BigDecimal salary, BigDecimal commissionPct) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -29,9 +23,6 @@ public class Employee {
 		this.commissionPct = commissionPct;
 	}
 
-	public Long getEmployeeId() {
-		return employeeId;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -61,13 +52,4 @@ public class Employee {
 		return commissionPct;
 	}
 
-	public void updateEmployee(EmployeeUpdateRequest request) {
-		this.firstName = request.getFirstName();
-		this.lastName = request.getLastName();
-		this.email = request.getEmail();
-		this.phoneNumber = request.getPhoneNumber();
-		this.hireDate = request.getHireDate();
-		this.salary = request.getSalary();
-		this.commissionPct = request.getCommissionPct();
-	}
 }
