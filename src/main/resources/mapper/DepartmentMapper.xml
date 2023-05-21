@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hjw_echo.repository.mapper.DepartmentMapper">
+    <resultMap id="department" type="com.example.hjw_echo.domain.Department">
+        <id property="departmentId" column="department_id"/>
+        <result property="departmentName" column="department_name"/>
+        <result property="managerId" column="manager_id"/>
+        <association property="location" column="location_id" javaType="com.example.hjw_echo.domain.Location" resultMap="location"/>
+    </resultMap>
+
+    <resultMap id="location" type="com.example.hjw_echo.domain.Location">
+        <id property="locationId" column="location_id"/>
+        <result property="streetAddress" column="street_address"/>
+        <result property="postalCode" column="postal_code"/>
+        <result property="city" column="city"/>
+        <result property="stateProvince" column="state_province"/>
+        <result property="countryId" column="country_id"/>
+    </resultMap>
+
+    <select id="getAllDepartmentsWithLocations" resultMap="department">
+        SELECT d.department_id, d.department_name, d.manager_id, l.location_id, l.street_address, l.postal_code, l.city, l.state_province, l.country_id
+		FROM departments d JOIN locations l ON d.location_id = l.location_id
+    </select>
+
+
+</mapper>
