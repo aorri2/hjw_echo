@@ -21,7 +21,6 @@ public class EmployeeController {
 
 	@GetMapping("/employees/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-		// db에서 employee id에 해당하는 값을 가져오자
 		Employee foundedEmployee = employeeRepository.findById(id);
 
 		return ResponseEntity.ok().body(foundedEmployee);
